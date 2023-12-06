@@ -13,8 +13,8 @@ from shortGPT.database.db_document import TinyMongoDocument
 AUDIO_EXTENSIONS = {".mp3", ".m4a", ".wav", ".flac", ".aac", ".ogg", ".wma", ".opus"}
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".gif", ".bmp", ".svg", ".webp"}
 VIDEO_EXTENSIONS = {".mp4", ".mkv", ".flv", ".avi", ".mov", ".wmv", ".webm", ".m4v"}
-TEMPLATE_ASSETS_DB_PATH = '.database/template_asset_db.json'
-ASSETS_DB_PATH = '.database/asset_db.json'
+TEMPLATE_ASSETS_DB_PATH = 'database/template_asset_db.json'
+ASSETS_DB_PATH = 'database/asset_db.json'
 
 class AssetType(enum.Enum):
     VIDEO = "video"

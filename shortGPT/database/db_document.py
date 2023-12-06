@@ -39,7 +39,7 @@ class TinyMongoClient(tm.TinyMongoClient):
         return tinydb.storages.JSONStorage
 
 
-TINY_MONGO_DATABASE = TinyMongoClient("./.database")
+TINY_MONGO_DATABASE = TinyMongoClient("./database")
 
 
 class TinyMongoDocument(AbstractDatabaseDocument):
