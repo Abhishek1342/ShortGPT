@@ -48,14 +48,20 @@ def extract_random_clip_from_video(video_url, video_duration, clip_duration , ou
         raise Exception("Could not get video duration")
     if not video_duration*0.7 > 120:
         raise Exception("Video too short")
-    start_time = video_duration*0.15 + random.random()* (0.7*video_duration-clip_duration)
-    
-    (
-        ffmpeg
-        .input(video_url, ss=start_time, t=clip_duration)
-        .output(output_file, codec="libx264", preset="ultrafast")
-        .run()
-    )
+    start_time_str = "{:02}:{:02}:{:02}".format(int(start_time // 3600), int((start_time % 3600) // 60), int(start_time % 60))
+    clip_duration_str = "{:02}:{:02}:{:02}".format(int(clip_duration // 3600), int((clip_duration % 3600) // 60), int(clip_duration % 60))
+
+
+    ffmpeg_command = [
+    "ffmpeg",
+    "-i", video_url,
+    "-ss", start_time_str,
+    "-t", clip_duration_str,
+    "-c:v", "libx264",
+    "-preset", "ultrafast",
+    output_file]
+
+    subprocess.run(ffmpeg_command)
     
     if not os.path.exists(output_file):
         raise Exception("Random clip failed to be written")
